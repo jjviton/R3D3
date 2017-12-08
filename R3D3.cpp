@@ -14,6 +14,10 @@
 
 R3D3::R3D3(int pin)
 {
+  // Preparo los pines de salida
+  pinMode(MotorA_IA, OUTPUT);
+  pinMode(MotorA_IB, OUTPUT);
+
   pinMode(11, OUTPUT);
   _pin = pin;
 
@@ -21,10 +25,18 @@ R3D3::R3D3(int pin)
     pinMode(LED_GREEN, OUTPUT);
 }
 
+/*******************************************************************
+test_bridgeH
+Funcion para testeo y debugg del resto de la clase y sus metodos.
+toDo:
+  .- añadir el control PWM
+  .- controlar motor + velocidad + sentido
+  .- ajustar angulos de giro.
 
+
+********************************************************************/
 void R3D3::test_bridgeH(int motor, int speed, int rotation){
-    pinMode(MotorA_IA, OUTPUT);
-    pinMode(MotorA_IB, OUTPUT);
+
 
     // Turn Righ
     digitalWrite(MotorA_IA, HIGH);

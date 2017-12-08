@@ -20,6 +20,12 @@ class R3D3
   public:
     R3D3(int pin);
     void test_bridgeH(int motor, int speed, int rotation);
+    void moveForward();
+    void moveback();
+    void turnRight(int angle);
+    void turnLeft(int angle);
+    void stop();
+    
     void dot();
     void dash();
   private:
