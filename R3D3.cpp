@@ -39,20 +39,22 @@ void R3D3::test_bridgeH(int motor, int speed, int rotation){
 
 
     // Turn Righ
-    digitalWrite(MotorA_IA, HIGH);
+        //digitalWrite(MotorA_IA, HIGH);
+    analogWrite(MotorA_IA, speed);    //PWM
     digitalWrite(MotorA_IB, LOW);
     digitalWrite(LED_GREEN, HIGH);
-    delay(100);
+    delay(300);
     // Stop
     digitalWrite(MotorA_IA, LOW);
     digitalWrite(MotorA_IB, LOW);
     digitalWrite(LED_GREEN, LOW);
     delay(1000);
     // Turn Left
-    digitalWrite(MotorA_IA, LOW);
+        // digitalWrite(MotorA_IA, LOW);
+    analogWrite(MotorA_IA, (255-speed));    //PWM
     digitalWrite(MotorA_IB, HIGH);
     digitalWrite(LED_RED, HIGH);
-    delay(100);
+    delay(300);
     // Stop
     digitalWrite(MotorA_IA, LOW);
     digitalWrite(MotorA_IB, LOW);

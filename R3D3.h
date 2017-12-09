@@ -10,10 +10,12 @@
 #define LED_RED   11
 #define LED_GREEN 10
 
-#define MotorB_IB 6
-#define MotorB_IA 7
+#define Motor_A   1
+#define MotorB_IA 6    // analog OUT
+#define MotorB_IB 7
+#define Motor_B   2
 #define MotorA_IB 4
-#define MotorA_IA 5
+#define MotorA_IA 5   // analog OUT
 
 class R3D3
 {
@@ -25,13 +27,12 @@ class R3D3
     void turnRight(int angle);
     void turnLeft(int angle);
     void stop();
-    
+
     void dot();
     void dash();
   private:
     int _pin;
-  //  int MotorA_IB=6;
-  //  int MotorA_IA=7;
+
 };
 
 #endif
