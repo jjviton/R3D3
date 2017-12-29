@@ -17,6 +17,8 @@ R3D3::R3D3(int pin)
   // Preparo los pines de salida
   pinMode(MotorA_IA, OUTPUT);
   pinMode(MotorA_IB, OUTPUT);
+  pinMode(MotorB_IA, OUTPUT);
+  pinMode(MotorB_IB, OUTPUT);
 
   pinMode(11, OUTPUT);
   _pin = pin;
@@ -38,31 +40,70 @@ toDo:
 void R3D3::test_bridgeH(int motor, int speed, int rotation){
 
 
-    // Turn Righ
-        //digitalWrite(MotorA_IA, HIGH);
-    analogWrite(MotorA_IA, speed);    //PWM
-    digitalWrite(MotorA_IB, LOW);
-    digitalWrite(LED_GREEN, HIGH);
-    delay(300);
-    // Stop
-    digitalWrite(MotorA_IA, LOW);
-    digitalWrite(MotorA_IB, LOW);
-    digitalWrite(LED_GREEN, LOW);
-    delay(1000);
-    // Turn Left
-        // digitalWrite(MotorA_IA, LOW);
-    analogWrite(MotorA_IA, (255-speed));    //PWM
-    digitalWrite(MotorA_IB, HIGH);
-    digitalWrite(LED_RED, HIGH);
-    delay(300);
-    // Stop
-    digitalWrite(MotorA_IA, LOW);
-    digitalWrite(MotorA_IB, LOW);
-    digitalWrite(LED_RED, LOW);
-    delay(1000);
+    if(motor == Motor_A){
+        // Turn Righ
+        analogWrite(MotorA_IA, speed);    //PWM
+        digitalWrite(MotorA_IB, LOW);
+        digitalWrite(LED_GREEN, HIGH);
+        delay(2000);
+        // Stop
+        digitalWrite(MotorA_IA, LOW);
+        digitalWrite(MotorA_IB, LOW);
+        digitalWrite(LED_GREEN, LOW);
+        delay(1000);
+        // Turn Left
+        analogWrite(MotorA_IA, (255-speed));    //PWM
+        digitalWrite(MotorA_IB, HIGH);
+        digitalWrite(LED_RED, HIGH);
+        delay(2000);
+        // Stop
+        digitalWrite(MotorA_IA, LOW);
+        digitalWrite(MotorA_IB, LOW);
+        digitalWrite(LED_RED, LOW);
+        delay(1000);
+      }
+      else if(motor=Motor_B){
+        // Turn Righ
+        analogWrite(MotorB_IA, speed);    //PWM
+        digitalWrite(MotorB_IB, LOW);
+        digitalWrite(LED_GREEN, HIGH);
+        delay(2000);
+        // Stop
+        digitalWrite(MotorB_IA, LOW);
+        digitalWrite(MotorB_IB, LOW);
+        digitalWrite(LED_GREEN, LOW);
+        delay(1000);
+        // Turn Left
 
+        analogWrite(MotorB_IA, (255-speed));    //PWM
+        digitalWrite(MotorB_IB, HIGH);
+        digitalWrite(LED_RED, HIGH);
+        delay(2000);
+        // Stop
+        digitalWrite(MotorB_IA, LOW);
+        digitalWrite(MotorB_IB, LOW);
+        digitalWrite(LED_RED, LOW);
+        delay(1000);
+      }
 
   }//test_bridgeH  FIN
+
+void R3D3::moveForward(int speed){
+  analogWrite(MotorA_IA, speed);    //PWM
+  digitalWrite(MotorA_IB, LOW);
+  analogWrite(MotorB_IA, speed);    //PWM
+  digitalWrite(MotorB_IB, LOW);
+}//moveForward
+
+
+void R3D3::stop(void){
+
+  digitalWrite(MotorA_IA, LOW);
+  digitalWrite(MotorA_IB, LOW);
+  digitalWrite(MotorB_IA, LOW);
+  digitalWrite(MotorB_IB, LOW);
+
+}//stop 
 
 
 
