@@ -95,6 +95,13 @@ void R3D3::moveForward(int speed){
   digitalWrite(MotorB_IB, LOW);
 }//moveForward
 
+void R3D3::moveBack(int speed){
+  analogWrite(MotorA_IA, 255-speed);    //PWM
+  digitalWrite(MotorA_IB, HIGH);
+  analogWrite(MotorB_IA, 255-speed);    //PWM
+  digitalWrite(MotorB_IB, HIGH);
+}//moveForward
+
 
 void R3D3::stop(void){
 
@@ -103,7 +110,20 @@ void R3D3::stop(void){
   digitalWrite(MotorB_IA, LOW);
   digitalWrite(MotorB_IB, LOW);
 
-}//stop 
+}//stop
+
+void R3D3::turnRight(int angle, int speed){
+  // Turn Righ
+  analogWrite(MotorA_IA, speed);    //PWM
+  digitalWrite(MotorA_IB, LOW);
+
+  analogWrite(MotorB_IA, 255-speed);    //PWM
+  digitalWrite(MotorB_IB, HIGH);
+
+  delay(angle);
+  stop();
+}//turnRight
+
 
 
 

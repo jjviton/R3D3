@@ -24,8 +24,8 @@ class R3D3
     void test_bridgeH(int motor, int speed, int rotation);
     void moveForward(int speed);
     void moveBack(int speed);
-    void turnRight(int angle);
-    void turnLeft(int angle);
+    void turnRight(int angle, int speed);
+    void turnLeft(int angle, int speed);
     void stop();
 
     void dot();
