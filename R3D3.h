@@ -28,8 +28,6 @@ class R3D3
     void turnLeft(int angle, int speed);
     void stop();
 
-    void dot();
-    void dash();
   private:
     int _pin;
 

@@ -102,44 +102,21 @@ void R3D3::moveBack(int speed){
   digitalWrite(MotorB_IB, HIGH);
 }//moveForward
 
-
+// Metodo para parar los motores
 void R3D3::stop(void){
 
   digitalWrite(MotorA_IA, LOW);
   digitalWrite(MotorA_IB, LOW);
   digitalWrite(MotorB_IA, LOW);
   digitalWrite(MotorB_IB, LOW);
-
 }//stop
 
 void R3D3::turnRight(int angle, int speed){
-  // Turn Righ
+  // Turn Righ,Pivotando.
   analogWrite(MotorA_IA, speed);    //PWM
   digitalWrite(MotorA_IB, LOW);
-
   analogWrite(MotorB_IA, 255-speed);    //PWM
   digitalWrite(MotorB_IB, HIGH);
-
-  delay(angle);
-  stop();
+  delay(angle * 3,3);  // tiempo de giro
+  stop();               // Paramos motores
 }//turnRight
-
-
-
-
-void R3D3::dot()
-{
-  digitalWrite(_pin, HIGH);
-  delay(250);
-  digitalWrite(_pin, HIGH);
-  delay(250);
-}
-
-void R3D3::dash()
-{
-  digitalWrite(_pin, HIGH);
-  delay(1000);
-  digitalWrite(_pin, LOW);
-
- delay(250);
-}
