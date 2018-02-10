@@ -12,6 +12,8 @@
 #include "Arduino.h"
 #include "R3D3.h"
 
+#define CORRECION_ANGULO  3,3
+
 R3D3::R3D3(int pin)
 {
   // Preparo los pines de salida
@@ -20,11 +22,11 @@ R3D3::R3D3(int pin)
   pinMode(MotorB_IA, OUTPUT);
   pinMode(MotorB_IB, OUTPUT);
 
-  pinMode(11, OUTPUT);
+  //pinMode(11, OUTPUT);
   _pin = pin;
 
-    pinMode(LED_RED, OUTPUT);
-    pinMode(LED_GREEN, OUTPUT);
+  //  pinMode(LED_RED, OUTPUT);
+  //  pinMode(LED_GREEN, OUTPUT);
 }
 
 /*******************************************************************
@@ -44,45 +46,45 @@ void R3D3::test_bridgeH(int motor, int speed, int rotation){
         // Turn Righ
         analogWrite(MotorA_IA, speed);    //PWM
         digitalWrite(MotorA_IB, LOW);
-        digitalWrite(LED_GREEN, HIGH);
+        //digitalWrite(LED_GREEN, HIGH);
         delay(2000);
         // Stop
         digitalWrite(MotorA_IA, LOW);
         digitalWrite(MotorA_IB, LOW);
-        digitalWrite(LED_GREEN, LOW);
+        //digitalWrite(LED_GREEN, LOW);
         delay(1000);
         // Turn Left
         analogWrite(MotorA_IA, (255-speed));    //PWM
         digitalWrite(MotorA_IB, HIGH);
-        digitalWrite(LED_RED, HIGH);
+        //digitalWrite(LED_RED, HIGH);
         delay(2000);
         // Stop
         digitalWrite(MotorA_IA, LOW);
         digitalWrite(MotorA_IB, LOW);
-        digitalWrite(LED_RED, LOW);
+        //digitalWrite(LED_RED, LOW);
         delay(1000);
       }
       else if(motor=Motor_B){
         // Turn Righ
         analogWrite(MotorB_IA, speed);    //PWM
         digitalWrite(MotorB_IB, LOW);
-        digitalWrite(LED_GREEN, HIGH);
+        //digitalWrite(LED_GREEN, HIGH);
         delay(2000);
         // Stop
         digitalWrite(MotorB_IA, LOW);
         digitalWrite(MotorB_IB, LOW);
-        digitalWrite(LED_GREEN, LOW);
+        //digitalWrite(LED_GREEN, LOW);
         delay(1000);
         // Turn Left
 
         analogWrite(MotorB_IA, (255-speed));    //PWM
         digitalWrite(MotorB_IB, HIGH);
-        digitalWrite(LED_RED, HIGH);
+        //digitalWrite(LED_RED, HIGH);
         delay(2000);
         // Stop
         digitalWrite(MotorB_IA, LOW);
         digitalWrite(MotorB_IB, LOW);
-        digitalWrite(LED_RED, LOW);
+        //digitalWrite(LED_RED, LOW);
         delay(1000);
       }
 
@@ -117,6 +119,6 @@ void R3D3::turnRight(int angle, int speed){
   digitalWrite(MotorA_IB, LOW);
   analogWrite(MotorB_IA, 255-speed);    //PWM
   digitalWrite(MotorB_IB, HIGH);
-  delay(angle * 3,3);  // tiempo de giro
+  delay((unsigned long) (angle * CORRECION_ANGULO));  // tiempo de giro
   stop();               // Paramos motores
 }//turnRight
