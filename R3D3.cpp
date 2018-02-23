@@ -12,7 +12,11 @@
 #include "Arduino.h"
 #include "R3D3.h"
 
-#define CORRECION_ANGULO  3,3
+#define CORRECION_ANGULO  4
+
+
+Servo headServo;
+
 
 R3D3::R3D3(int pin)
 {
@@ -27,6 +31,16 @@ R3D3::R3D3(int pin)
 
   //  pinMode(LED_RED, OUTPUT);
   //  pinMode(LED_GREEN, OUTPUT);
+}
+
+/******************************************************
+Init. función para inicializar el robot
+
+*******************************************************/
+void R3D3::Init(void){
+    headServo.attach(12);
+    pinMode(pulsador_A, INPUT);
+    pinMode(zumb, OUTPUT);
 }
 
 /*******************************************************************
@@ -122,3 +136,36 @@ void R3D3::turnRight(int angle, int speed){
   delay((unsigned long) (angle * CORRECION_ANGULO));  // tiempo de giro
   stop();               // Paramos motores
 }//turnRight
+
+
+void R3D3::testServo(void){
+  int pos;
+
+   for (pos = 30; pos <= 150; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    headServo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15ms for the servo to reach the position
+  }
+  for (pos = 150; pos >= 30; pos -= 1) { // goes from 180 degrees to 0 degrees
+    headServo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15ms for the servo to reach the position
+  }
+
+
+}//testServo
+
+void R3D3::headPosition(int position){
+      headServo.write(position);
+}//headPosition
+
+
+byte R3D3::getPulsador(byte reference){
+   return (digitalRead(reference));
+}
+
+
+void R3D3::beep(byte pulsos){
+  digitalWrite(zumb, 255);
+  delay(600);
+  digitalWrite(zumb, 0);
+}
