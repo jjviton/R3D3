@@ -15,7 +15,7 @@
 #define CORRECION_ANGULO  4
 
 
-Servo headServo;
+Servo headServo;   /* inhabilita pines 9 y 10 */
 
 
 R3D3::R3D3(int pin)
@@ -38,7 +38,7 @@ Init. función para inicializar el robot
 
 *******************************************************/
 void R3D3::Init(void){
-    headServo.attach(12);
+   headServo.attach(12);
     pinMode(pulsador_A, INPUT);
     pinMode(zumb, OUTPUT);
 }
