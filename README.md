@@ -12,6 +12,8 @@ En /doc un pdf con el codigo para verlo rapidamente.
 
 En el wiki informacion sobre como realizamos el proyecto https://github.com/jjviton/R3D3/wiki
 
-FUNCIONAMIENTO:
+
+
+# FUNCIONAMIENTO:
 
 Al conectar alimentacion, espera a pulsar el pulsador de la placa I/O. Luego espera una palmada para empezar a andar. Cuando encuentra un obstaculo, para, retrocede, gira y sigue andando.
