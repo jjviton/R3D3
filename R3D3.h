@@ -22,7 +22,7 @@
 #define HeadLeft  30
 
 #define pulsador_A 3  // pulsador
-#define zumb  8
+#define zumb  9
 
 
 #define ON 1
@@ -46,7 +46,7 @@ class R3D3
     void headPosition(int position);
 
     byte getPulsador(byte reference);  //Devuelve TRUE si pulsado
-    void beep(byte pulsos);
+    void beep(byte duration, byte times);
 
 
   private:

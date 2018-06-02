@@ -34,7 +34,7 @@ R3D3::R3D3(int pin)
 }
 
 /******************************************************
-Init. función para inicializar el robot
+Init. funciÃ³n para inicializar el robot
 
 *******************************************************/
 void R3D3::Init(void){
@@ -47,7 +47,7 @@ void R3D3::Init(void){
 test_bridgeH
 Funcion para testeo y debugg del resto de la clase y sus metodos.
 toDo:
-  .- añadir el control PWM
+  .- aÃ±adir el control PWM
   .- controlar motor + velocidad + sentido
   .- ajustar angulos de giro.
 
@@ -128,7 +128,7 @@ void R3D3::stop(void){
 }//stop
 
 void R3D3::turnRight(int angle, int speed){
-  // Turn Righ,Pivotando.
+  // Turn Right,Pivotando.
   analogWrite(MotorA_IA, speed);    //PWM
   digitalWrite(MotorA_IB, LOW);
   analogWrite(MotorB_IA, 255-speed);    //PWM
@@ -136,6 +136,16 @@ void R3D3::turnRight(int angle, int speed){
   delay((unsigned long) (angle * CORRECION_ANGULO));  // tiempo de giro
   stop();               // Paramos motores
 }//turnRight
+
+void R3D3::turnLeft(int angle, int speed){
+  // Turn Left,Pivotando.
+  analogWrite(MotorB_IA, speed);    //PWM
+  digitalWrite(MotorB_IB, LOW);
+  analogWrite(MotorA_IA, 255-speed);    //PWM
+  digitalWrite(MotorA_IB, HIGH);
+  delay((unsigned long) (angle * CORRECION_ANGULO));  // tiempo de giro
+  stop();               // Paramos motores
+}//turnLeft
 
 
 void R3D3::testServo(void){
@@ -164,8 +174,11 @@ byte R3D3::getPulsador(byte reference){
 }
 
 
-void R3D3::beep(byte pulsos){
-  digitalWrite(zumb, 255);
-  delay(600);
-  digitalWrite(zumb, 0);
+void R3D3::beep(byte duration, byte times){
+  for (int i=0; i<times; i++){
+    digitalWrite(zumb, 255);
+    delay(duration);
+    digitalWrite(zumb, 0);
+    delay(duration);
+  }
 }
