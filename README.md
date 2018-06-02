@@ -14,6 +14,6 @@ En el wiki informacion sobre como realizamos el proyecto https://github.com/jjvi
 
 
 
-# FUNCIONAMIENTO:
+## FUNCIONAMIENTO:
 
 Al conectar alimentacion, espera a pulsar el pulsador de la placa I/O. Luego espera una palmada para empezar a andar. Cuando encuentra un obstaculo, para, retrocede, gira y sigue andando.
